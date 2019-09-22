@@ -1,11 +1,11 @@
-public class Array {
+public class Array<T> {
 
-    private int[] data;
+    private T[] data;
     private int size;
 
 
     public Array(int capacity){
-        data = new int[capacity];
+        data = (T[])new Object[capacity];
         size = 0;
     }
 
@@ -28,7 +28,7 @@ public class Array {
         return  data.length;
     }
 
-    public int get(int index){
+    public T get(int index){
         if(index < 0 || index >= size ){
             throw new IllegalArgumentException("Illegal index argument.");
         }
@@ -36,25 +36,25 @@ public class Array {
     }
 
     // 修改index索引位置的元素为e
-    public int set(int index, int e){
+    public void set(int index, T e){
         if(index < 0 || index >= size ){
             throw new IllegalArgumentException("Illegal index argument.");
         }
-        return  data[index] = e;
+        data[index] = e;
     }
 
-    public boolean contains(int e){
+    public boolean contains(T e){
         for (int i = 0; i < size; i++){
-            if(data[i] == e){
+            if(data[i].equals(e)){
                 return  true;
             }
         }
         return  false;
     }
     // find array if contains element e, if not return -1.
-    public int find(int e){
+    public int find(T e){
         for (int i = 0; i < size; i++){
-            if(data[i] == e){
+            if(data[i].equals(e)){
                 return  i;
             }
         }
@@ -62,17 +62,17 @@ public class Array {
     }
 
     // add an element at first position
-    public void addFirst(int e){
+    public void addFirst(T e){
         add(0, e);
     }
 
     // add an element at last position
-    public void addLast(int e){
+    public void addLast(T e){
         add(size, e);
     }
 
     // add an
-    public void add(int index, int e){
+    public void add(int index, T e){
 
         if(size == data.length) {
             throw new IllegalArgumentException("Add failed. The array is full.");
@@ -90,22 +90,22 @@ public class Array {
         data[index] = e;
         size ++;
     }
-    public int removeFirst(){
+    public T removeFirst(){
         return remove(0);
     }
-    public int removeLast(){
+    public T removeLast(){
         return remove(size - 1);
     }
 
     // 从数组删除元素e
-    public void removeElement(int e){
+    public void removeElement(T e){
         int index = find(e);
         if(index != -1) {
             remove(index);
         }
     }
 
-    public void removeAllElement(int e){
+    public void removeAllElement(T e){
         int index = find(e);
         if(index != -1) {
             for(int i = 0; i < size; i++){
@@ -120,16 +120,17 @@ public class Array {
         }
     }
 
-    public int remove(int index){
+    public T remove(int index){
 
         if(index < 0 || index >= size ){
             throw new IllegalArgumentException("Illegal index argument.");
         }
-        int result = data[index];
+        T result = data[index];
         for(int i = index + 1; i < size; i++){
             data[i-1] = data[i];
         }
         size--;
+        data[size] = null; // loitering objects
         return result;
     }
 
@@ -140,7 +141,7 @@ public class Array {
         sb.append(String.format("Array: size=%d , capacity=%d\n", size, data.length));
         sb.append("[ ");
         for (int i = 0; i < size; i ++) {
-            sb.append(data[i]);
+            sb.append(data[i].toString());
             sb.append(", ");
         }
         sb.append("] ");
