@@ -1,8 +1,10 @@
+import javax.swing.plaf.synth.SynthTableUI;
+
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        Array<Integer> newArray = new Array(20);
+        Array<Integer> newArray = new Array(12);
 
         for (int i =0; i < 10; i++){
             newArray.addLast(i);
@@ -11,6 +13,7 @@ public class Main {
 
         newArray.addFirst(3);
         newArray.addFirst(3);
+
         newArray.add(2, 3);
 
         newArray.set(2, 4);
@@ -19,13 +22,40 @@ public class Main {
 
         newArray.removeLast();
         newArray.removeFirst();
+        newArray.removeFirst();
+        newArray.removeFirst();
 
         System.out.println(newArray);
 
         newArray.removeAllElement(100);
 
-
+// test student
+//        class Student{
+//
+//            private  String name;
+//            private  int score;
+//
+//            public Student(String StudentName, int StudentScore){
+//                this.name = StudentName;
+//                this.score = StudentScore;
+//            }
+//
+//            @Override
+//            public String toString(){
+//                return  String.format("Student name is %s, Score is %d.", name, score);
+//            }
+//        }
+//
+//
+//        Array<Student> students = new Array<>(20);
+//        students.addLast(new Student("san", 14));
+//        students.addLast(new Student("san", 14));
+//        students.addLast(new Student("san", 14));
+//        System.out.println(students);
 
 
     }
+
+
+
 }

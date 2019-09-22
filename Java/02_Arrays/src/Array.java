@@ -74,14 +74,16 @@ public class Array<T> {
     // add an
     public void add(int index, T e){
 
-        if(size == data.length) {
-            throw new IllegalArgumentException("Add failed. The array is full.");
-        }
-
         //避免插入的元素造成数组的不连续
         if(index < 0 || index > size ){
            throw new IllegalArgumentException("Illegal index argument.");
         }
+
+        if(size == data.length) {
+            resize(data.length * 2 );
+            //throw new IllegalArgumentException("Add failed. The array is full.");
+        }
+
 
         for (int i = size - 1; i >= index; i--){
             data[i + 1] = data[i];
@@ -131,6 +133,10 @@ public class Array<T> {
         }
         size--;
         data[size] = null; // loitering objects
+        if(size == data.length / 2)
+        {
+            resize( data.length / 2);
+        }
         return result;
     }
 
@@ -147,6 +153,16 @@ public class Array<T> {
         sb.append("] ");
        return  sb.toString();
     }
+
+    private void resize(int newCapacity) {
+        T[] newData = (T[]) new Object[newCapacity];
+
+        for(int i = 0; i < size; i++){
+            newData[i] = data[i];
+        }
+        data = newData;
+    }
+
 
 
 }
