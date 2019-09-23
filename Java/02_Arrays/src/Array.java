@@ -133,7 +133,7 @@ public class Array<T> {
         }
         size--;
         data[size] = null; // loitering objects
-        if(size == data.length / 2)
+        if(size == data.length / 4 && data.length / 2 != 0)
         {
             resize( data.length / 2);
         }
