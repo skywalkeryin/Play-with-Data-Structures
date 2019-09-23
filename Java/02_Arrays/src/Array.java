@@ -113,6 +113,7 @@ public class Array<T> {
             for(int i = 0; i < size; i++){
                 if(data[i] == e){
                     remove(i);
+                    i--;
                 }
             }
         }else{

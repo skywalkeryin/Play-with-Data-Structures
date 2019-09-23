@@ -27,7 +27,14 @@ public class Main {
 
         System.out.println(newArray);
 
-        newArray.removeAllElement(100);
+
+        newArray.addFirst(3);
+        newArray.addFirst(3);
+        newArray.addFirst(3);
+        newArray.removeAllElement(3);
+
+        System.out.println(newArray);
+
 
 // test student
 //        class Student{
