@@ -33,7 +33,7 @@ public class MyArray<T>{
 
     private void add(int index, T e){
 
-        if(index < 0 && index > size){
+        if(index < 0 || index > size){
             throw new ArgumentException("Illegal Argument.", "index");
         }
 
@@ -80,7 +80,7 @@ public class MyArray<T>{
 
     private T remove(int index){
 
-         if(index < 0 && index >= size){
+         if(index < 0 || index >= size){
              throw new ArgumentNullException("Illegar argment.");
          }
 
@@ -90,7 +90,7 @@ public class MyArray<T>{
              data[i] = data[i + 1];
          }
          size--;
-         data[size - 1] = default(T);
+         data[size] = default(T);
 
         if(size == data.Length / 4 && data.Length / 2 != 0){
             resize(data.Length / 2);
