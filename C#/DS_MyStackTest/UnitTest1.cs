@@ -9,8 +9,6 @@ namespace DS_MyStackTest
         public void Test1()
         {
 
-
-
         }
     }
 }
