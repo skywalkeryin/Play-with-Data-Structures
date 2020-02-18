@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\02_Arrays\DS_MyArray.csproj" />
+    <ProjectReference Include="..\DS_MyArray\DS_MyArray.csproj" />
   </ItemGroup>
 
 </Project>
