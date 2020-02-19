@@ -7,11 +7,12 @@ namespace DS_MyStack
         static void Main(string[] args)
         {
             MyArrayStack<int> stack = new MyArrayStack<int>();
-            
-            for(int i = 0; i < 5; i++)
+            LinkedListStack<int> stack2 = new LinkedListStack<int>();
+
+            for (int i = 0; i < 5; i++)
             {
-                stack.Push(i);
-                Console.WriteLine(stack);
+                stack2.Push(i);
+                Console.WriteLine(stack2);
             }
 
         }
