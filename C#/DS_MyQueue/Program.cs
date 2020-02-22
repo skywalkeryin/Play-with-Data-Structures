@@ -41,11 +41,14 @@ namespace DS_MyQueue
             int optCount = 100000;
             IQueue<int> queue = new MyArrayQueue<int>();
             IQueue<int> queue2 = new LoopQueue<int>();
+            IQueue<int> queue3 = new LinkedListQueue<int>();
 
             double testTime1 = TestQueue(queue, optCount);
             Console.WriteLine($"Array Queue, Time: {testTime1}s");
             double testTime2 = TestQueue(queue2, optCount);
             Console.WriteLine($"Loop Queue, Time: {testTime2}s");
+            double testTime3 = TestQueue(queue3, optCount);
+            Console.WriteLine($"Linked List Queue, Time: {testTime3}s");
 
         }
     }
