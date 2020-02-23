@@ -23,10 +23,19 @@ namespace DS_MyLinkedList
             //Console.WriteLine(linkedList);
 
             // recusive
-            int[] nums = new int[]{ 1, 2, 6, 3, 4, 5, 6 };
-            ListNode head = new ListNode(nums);
-            Console.WriteLine(head);
-            head = Remove_Linked_List_Elements.RemoveElements(head, 6, 0);
+            //int[] nums = new int[]{ 1, 2, 6, 3, 4, 5, 6 };
+            //ListNode head = new ListNode(nums);
+            //Console.WriteLine(head);
+            //head = Remove_Linked_List_Elements.RemoveElements(head, 6, 0);
+
+            // LoopLinkedList
+            LoopLinkedList<int> list2 = new LoopLinkedList<int>();
+
+            for (int i =0; i < 5; i++)
+            {
+                list2.AddLast(i);
+            }
+            Console.WriteLine(list2);
 
 
         }
