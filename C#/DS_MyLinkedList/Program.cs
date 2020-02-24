@@ -29,12 +29,17 @@ namespace DS_MyLinkedList
             //head = Remove_Linked_List_Elements.RemoveElements(head, 6, 0);
 
             // LoopLinkedList
+            LoopLinkedList<int> list3 = new LoopLinkedList<int>();
+            Console.WriteLine(list3);
+
+
             LoopLinkedList<int> list2 = new LoopLinkedList<int>();
 
-            for (int i =0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 list2.AddLast(i);
             }
+            list2.Add(2, 8);
             Console.WriteLine(list2);
 
 
