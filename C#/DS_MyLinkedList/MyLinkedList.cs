@@ -127,7 +127,7 @@ namespace DS_MyLinkedList
         }
         public T Remove(int index)
         {
-            if (index < 0 && index >= size)
+            if (index < 0 || index >= size)
             {
                 throw new Exception("Remove failed. Illegal index.");
             }

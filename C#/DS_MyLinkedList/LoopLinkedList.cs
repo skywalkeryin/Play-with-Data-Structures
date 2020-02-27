@@ -179,10 +179,6 @@ namespace DS_MyLinkedList
 
         public T Remove(int index)
         {
-            if (IsEmpty())
-            {
-                throw new Exception("Remove Failed. LoopLinkedlist is empty.");
-            }
             if (index < 0 || index >= size)
             {
                 throw new Exception("Remove Failed. Illegal index.");

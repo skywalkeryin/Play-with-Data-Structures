@@ -41,8 +41,8 @@ namespace DS_MyLinkedList
 
         static void Main(string[] args)
         {
-            //MyLinkedList<int> linkedList = new MyLinkedList<int>();
-            //linkedList.RemoveFirst();
+            MyLinkedList<int> linkedList = new MyLinkedList<int>();
+            linkedList.RemoveFirst();
             //for(int i = 0; i < 5; i++)
             //{
             //    linkedList.AddFirst(i);
@@ -82,15 +82,15 @@ namespace DS_MyLinkedList
             //Console.WriteLine(list2);
 
             //test addlast 时间复杂度
-            LoopLinkedList<int> list3 = new LoopLinkedList<int>();
-            LoopLinkedList<int> list4 = new LoopLinkedList<int>();
-            int optCount = 100000;
+            //LoopLinkedList<int> list3 = new LoopLinkedList<int>();
+            //LoopLinkedList<int> list4 = new LoopLinkedList<int>();
+            //int optCount = 100000;
 
 
-            double testTime3 = TestLoopLinkedList1(list3, optCount);
-            Console.WriteLine($"Linkedlist 3, Time: {testTime3}s");
-            double testTime4 = TestLoopLinkedList2(list4, optCount);
-            Console.WriteLine($"Linkedlist 4, Time: {testTime4}s");
+            //double testTime3 = TestLoopLinkedList1(list3, optCount);
+            //Console.WriteLine($"Linkedlist 3, Time: {testTime3}s");
+            //double testTime4 = TestLoopLinkedList2(list4, optCount);
+            //Console.WriteLine($"Linkedlist 4, Time: {testTime4}s");
 
         }
     }
