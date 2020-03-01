@@ -42,14 +42,23 @@ namespace DS_MyLinkedList
         static void Main(string[] args)
         {
             MyLinkedList<int> linkedList = new MyLinkedList<int>();
-            linkedList.RemoveFirst();
-            //for(int i = 0; i < 5; i++)
+            //linkedList.RemoveFirst();
+            //for (int i = 0; i < 5; i++)
             //{
-            //    linkedList.AddFirst(i);
+            //    linkedList.AddLast(i);
             //    Console.WriteLine(linkedList);
             //}
             //linkedList.Add(2, 666);
             //Console.WriteLine(linkedList);
+
+            //MyLinkedList<int> linkedList2 = new MyLinkedList<int>();
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    linkedList2.AddRecursive(i);
+            //    Console.WriteLine(linkedList2);
+            //}
+            //linkedList2.Add(2, 666);
+            //Console.WriteLine(linkedList2);
 
             //linkedList.Remove(2);
             //Console.WriteLine(linkedList);

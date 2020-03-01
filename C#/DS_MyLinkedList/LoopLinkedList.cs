@@ -4,6 +4,10 @@ using System.Text;
 
 namespace DS_MyLinkedList
 {
+    /// <summary>
+    /// 循环链表 和 双向链表
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class LoopLinkedList<T>
     {
         private class Node

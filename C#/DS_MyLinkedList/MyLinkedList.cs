@@ -90,6 +90,23 @@ namespace DS_MyLinkedList
         {
             Add(size, e);
         }
+
+        public void AddRecursive(T e)
+        {
+            dummyHead.next = AddRecursive(dummyHead.next, e);
+        }
+
+        private Node AddRecursive(Node node, T e)
+        {
+            if (node == null)
+            {
+                size++;
+                return new Node(e);
+            }
+
+            node.next = AddRecursive(node.next, e);
+            return node;
+        }
         public T Get(int index)
         {
             if (index < 0 && index >= size)
