@@ -7,7 +7,7 @@ namespace DS_BST
 {
     public class BST<T> where T : IComparable<T>
     {
-        private class Node {
+        public class Node {
             public T e;
             public Node left;
             public Node right;
@@ -204,6 +204,84 @@ namespace DS_BST
 
             Console.WriteLine(node.e);
 
+        }
+
+        public T minimum()
+        {
+            if(size == 0)
+            {
+                throw new Exception("BST is empty");
+            }
+
+            return minimum(root).e;
+        }
+
+        public Node minimum(Node node)
+        {
+            if (node.left == null)
+            {
+                return node;
+            }
+            return minimum(node.left);
+        }
+
+        public T maximum()
+        {
+            if (size == 0)
+            {
+                throw new Exception("BST is empty");
+            }
+
+            return maximum(root).e;
+        }
+        private Node maximum(Node node) {
+            if (node.right == null)
+            {
+                return node;
+            }
+            return maximum(node.right);
+                          
+        }
+
+        public T RemoveMin()
+        {
+            T ret = minimum();
+            RemoveMin();
+            return ret;
+        }
+
+        // 
+        private Node RemoveMin(Node node)
+        {
+            if (node.left == null)
+            {
+                Node rightNode = node.right;
+                node.right = null;
+                size--;
+                return rightNode;
+            }
+            node.left = RemoveMin(node.left);
+            return node;
+        }
+
+        public T RemoveMax()
+        {
+            T ret = maximum();
+            RemoveMax();
+            return ret;
+        }
+
+        private Node RemoveMax(Node node)
+        {
+            if(node.right == null)
+            {
+                Node leftNode = node.left;
+                node.left = null;
+                size--;
+                return leftNode;
+            }
+            node.right = RemoveMax(node.right);
+            return node;
         }
 
         public string GenerateBSTString()
