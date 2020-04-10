@@ -246,7 +246,7 @@ namespace DS_BST
         public T RemoveMin()
         {
             T ret = minimum();
-            RemoveMin();
+            root = RemoveMin(root);
             return ret;
         }
 
@@ -267,10 +267,13 @@ namespace DS_BST
         public T RemoveMax()
         {
             T ret = maximum();
-            RemoveMax();
+            root = RemoveMax(root);
             return ret;
         }
 
+
+        // 删除以node为根的二分搜索树的最大值
+        // 返回删除节点后的二分搜索树的根
         private Node RemoveMax(Node node)
         {
             if(node.right == null)
@@ -283,6 +286,146 @@ namespace DS_BST
             node.right = RemoveMax(node.right);
             return node;
         }
+
+
+        public void Remove(T e)
+        {
+            root = Remove(root, e);
+        }
+
+        private Node Remove(Node node, T e)
+        {
+            if(node == null)
+            {
+                return null;
+            }
+            if (node.e.CompareTo(e) < 0)
+            {
+                 node.right = Remove(node.right, e);
+                return node;
+            }
+            else if (node.e.CompareTo(e) > 0)
+            {
+                node.left = Remove(node.left, e);
+                return node;
+            }
+            else
+            {
+                if (node.left == null)  // 待删除节点左子树为空的情况
+                {
+                    Node retNode = node.right;
+                    node.right = null;
+                    size--;
+                    return retNode;
+                }
+                else if (node.right == null) // 待删除节点右子树为空的情况
+                {
+                    Node retNode = node.left;
+                    node.left = null;
+                    size--;
+                    return retNode;
+                }
+                else
+                {
+                    // 待删除节点左右子树均不为空
+                    // 找到比待删除节点大的最小节点， 即待删除节点右子树的最小节点
+                    // 用该节点来代替待删除节点
+                    //Node successor = minimum(node.right);
+
+                    //successor.right = RemoveMin(node.right);
+                    //successor.left = node.left;
+                    //node.left = node.right = null;
+
+                    //return successor;
+
+                    Node predecessor = maximum(node.left);
+                    
+                    predecessor.left =  RemoveMax(node.left);
+                    predecessor.right = node.right;
+                    node.right = node.left = null;
+                    
+                    return predecessor;
+                }
+
+                
+            }
+        }
+
+        public T Floor(T e)
+        {
+            Node retNode = floor(root, e);
+            if (retNode != null)
+            {
+                return retNode.e;
+            }
+            else
+            {
+                return default(T);
+            }
+        }
+
+        private Node floor(Node node, T e)
+        {    
+            if (node == null)
+            {
+                return null;
+            }
+
+            if (node.e.CompareTo(e) == 0)
+            {
+                return node;
+            }
+            else if (node.e.CompareTo(e) > 0 )  
+            {
+               return floor(node.left, e);
+            }
+
+            Node right = floor(node.right, e);
+
+            if (right == null)
+            {
+                return node;
+            }
+            else
+            {
+                return right;
+            }
+
+        }
+
+        public T Ceil(T e)
+        {
+            Node retNode = ceil(root, e);
+            if (retNode != null)
+            {
+                return retNode.e;
+            }
+            return default(T);
+        }
+
+        private Node ceil(Node node, T e)
+        {
+            if (node == null)
+            {
+                return node;
+            }
+            if (node.e.CompareTo(e) > 0)
+            {
+                return ceil(node.right, e);
+            }
+
+            Node left = ceil(node.left, e);
+            if (left == null)
+            {
+                return node;
+            }
+            else
+            {
+                return left;
+            }
+
+        }
+        
 
         public string GenerateBSTString()
         {
