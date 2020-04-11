@@ -139,6 +139,7 @@ namespace DS_MyLinkedList
                 {
                     return true;
                 }
+                cur = cur.next;
             }
             return false;
         }
@@ -167,6 +168,27 @@ namespace DS_MyLinkedList
         public T RemoveLast()
         {
             return Remove(size - 1);
+        }
+
+        public void RemoveElement(T e)
+        {
+            Node prev = dummyHead;
+            while (prev.next != null)
+            {
+                if (prev.next.e.Equals(e))
+                {
+                    break;
+                }
+                prev = prev.next;
+            }
+
+            if (prev.next != null)
+            {
+                Node delNode = prev.next;
+                prev.next = delNode.next;
+                delNode.next = null;
+                size--;
+            }
         }
         public override string ToString()
         {
