@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS_BST", "DS_BST\DS_BST.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_Set", "DS_Set\DS_Set.csproj", "{9134B15D-3C13-4B25-A96C-00E30DAA99F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_Map", "DS_Map\DS_Map.csproj", "{B54D64E6-2915-492D-B04D-6F177C64649D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{9134B15D-3C13-4B25-A96C-00E30DAA99F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9134B15D-3C13-4B25-A96C-00E30DAA99F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9134B15D-3C13-4B25-A96C-00E30DAA99F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B54D64E6-2915-492D-B04D-6F177C64649D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B54D64E6-2915-492D-B04D-6F177C64649D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B54D64E6-2915-492D-B04D-6F177C64649D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B54D64E6-2915-492D-B04D-6F177C64649D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

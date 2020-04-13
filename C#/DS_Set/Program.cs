@@ -45,17 +45,21 @@ namespace DS_Set
             Console.WriteLine("Total different words: " + set2.GetSize());
 
 
-            Console.WriteLine("--------------test seting------------------");
-            string fileName = "pride-and-prejudice.txt";
+            //Console.WriteLine("--------------test seting------------------");
+            //string fileName = "pride-and-prejudice.txt";
 
-            BSTSet<string> set3 = new BSTSet<string>();
-            double time1 = testSet(set3, fileName);
-            Console.WriteLine("BST Set: " + time1 + "s");
+            //BSTSet<string> set3 = new BSTSet<string>();
+            //double time1 = testSet(set3, fileName);
+            //Console.WriteLine("BST Set: " + time1 + "s");
 
-            LinkedListSet<string> set4 = new LinkedListSet<string>();
-            double time2 = testSet(set4, fileName);
-            Console.WriteLine("BST Set: " + time2 + "s");
+            //LinkedListSet<string> set4 = new LinkedListSet<string>();
+            //double time2 = testSet(set4, fileName);
+            //Console.WriteLine("BST Set: " + time2 + "s");
 
+
+
+            string[] wordsdd = { "gin", "zen", "gig", "msg" };
+    
 
         }
 
@@ -82,6 +86,8 @@ namespace DS_Set
             stopWatch.Stop();
             return (double)stopWatch.ElapsedMilliseconds / 1000.000;
         }
+
+        
 
     }
 }
