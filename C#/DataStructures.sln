@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_Set", "DS_Set\DS_Set.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_Map", "DS_Map\DS_Map.csproj", "{B54D64E6-2915-492D-B04D-6F177C64649D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_Heap", "DS_Heap\DS_Heap.csproj", "{947BE10D-882D-4827-B8F7-5FBF28D39660}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{B54D64E6-2915-492D-B04D-6F177C64649D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B54D64E6-2915-492D-B04D-6F177C64649D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B54D64E6-2915-492D-B04D-6F177C64649D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947BE10D-882D-4827-B8F7-5FBF28D39660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947BE10D-882D-4827-B8F7-5FBF28D39660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947BE10D-882D-4827-B8F7-5FBF28D39660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947BE10D-882D-4827-B8F7-5FBF28D39660}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

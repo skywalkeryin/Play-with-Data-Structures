@@ -212,6 +212,17 @@ namespace DS_MyArray
             return res;
         }
        
+         public void Swap(int index1, int index2)
+        {
+            if (index1 < 0 || index1 >= _size || index2 < 0 || index2 >= _size)
+            {
+                throw new Exception("Illegal index");
+            }
+            T temp = _data[index1];
+            _data[index1] = _data[index2];
+            _data[index2] = temp;
+        }
+
         private void Resize(int newCapacity)
         {
             T[] newData = new T[newCapacity];
