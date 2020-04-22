@@ -6,6 +6,15 @@ namespace DS_LeetCode
 {
     public class Sorting
     {
+
+        #region "Helper"
+        private void swap(int[] arr, int i, int j)
+        {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        #endregion
         #region "Insertion Sort"
         public void IsertionSort(int[] arr)
        {
@@ -79,12 +88,6 @@ namespace DS_LeetCode
             return i + 1;
         }
 
-        private void swap(int[] arr, int i, int j)
-        {
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
         #endregion
     }
 }
