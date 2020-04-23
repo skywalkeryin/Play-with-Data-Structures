@@ -8,40 +8,52 @@ namespace DS_LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(IntToString(1234));
-            Console.WriteLine(IntToString(-1234));
-            Console.WriteLine(IntToString(0));
+            //Console.WriteLine(IntToString(1234));
+            //Console.WriteLine(IntToString(-1234));
+            //Console.WriteLine(IntToString(0));
 
-            List<int> PrimeList = new List<int>();
-            for (int i = -100; i <= 0; i++)
-            {
-                if (IsPrime(i))
-                {
-                    PrimeList.Add(i);
-                }
-            }
+            //List<int> PrimeList = new List<int>();
+            //for (int i = -100; i <= 0; i++)
+            //{
+            //    if (IsPrime(i))
+            //    {
+            //        PrimeList.Add(i);
+            //    }
+            //}
 
-            StringBuilder sb = new StringBuilder();
+            //StringBuilder sb = new StringBuilder();
 
-            sb.Append("[ ");
-            foreach (var prime in PrimeList)
-            {
-                sb.Append(prime.ToString() + ", ");
-            }
-            sb.Append("]");
+            //sb.Append("[ ");
+            //foreach (var prime in PrimeList)
+            //{
+            //    sb.Append(prime.ToString() + ", ");
+            //}
+            //sb.Append("]");
 
-            Console.WriteLine(sb);
+            //Console.WriteLine(sb);
 
            
 
-            Console.WriteLine(Pow(2, -5));
-            Console.WriteLine(Pow(2, 10));
+            //Console.WriteLine(Pow(2, -5));
+            //Console.WriteLine(Pow(2, 10));
 
-            int[] nums = new int[] { 1, 2, 3 };
-            Console.WriteLine(nums.Length);
-            nums[2] = 0;
+            //int[] nums = new int[] { 1, 2, 3 };
+            //Console.WriteLine(nums.Length);
+            //nums[2] = 0;
             
-            Console.WriteLine(nums.Length);
+            //Console.WriteLine(nums.Length);
+
+
+            // test time
+            int[] arr = Sorting.GenerateTestArray(10000);
+
+            Console.WriteLine("bubble sort seconds " + Sorting.TestSorting(arr, Sorting.BubbleSort));
+            Console.WriteLine("bubble sort1 seconds " + Sorting.TestSorting(arr, Sorting.BubbleSort1));
+
+
+            Console.WriteLine("insertion sort seconds " + Sorting.TestSorting(arr, Sorting.IsertionSort));
+            Console.WriteLine("insertion sort1 seconds " + Sorting.TestSorting(arr, Sorting.IsertionSort2));
+            Console.WriteLine("shell sort seconds " + Sorting.TestSorting(arr, Sorting.ShellSort));
 
         }
 
