@@ -23,9 +23,24 @@ namespace DS_LeetCode
                 return -1;
             }
 
-            return watch.ElapsedMilliseconds / 1000.000000000000;
+            return watch.Elapsed.TotalSeconds;
+        }
 
+        public static double TestAlgo(int[] arr, Func<int[], int> sortingAction)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
 
+            sortingAction(arr);
+
+            watch.Stop();
+
+            if (!TestSortedArray(arr))
+            {
+                return -1;
+            }
+
+            return watch.Elapsed.TotalSeconds;
         }
 
         public static int[] GenerateTestArray(int n)
@@ -41,6 +56,41 @@ namespace DS_LeetCode
             return result;
         }
 
+        public static int[] GenerateTestArray(int n, int range)
+        {
+            int[] result = new int[n];
+
+            Random rand = new Random();
+
+            for (int i = 0; i < n; i++)
+            {
+                result[i] = rand.Next(range);
+            }
+            return result;
+        }
+
+        public static int[] GeneratedNearlyArray(int n, int swapTimes)
+        {
+            int[] result = new int[n];
+            for (int i = 0; i<n;i++)
+            {
+
+               result[i] = i;
+            }
+
+            Random rand = new Random();
+
+            for (int j = 0; j< swapTimes; j++)
+            {
+                int a = rand.Next(0, n - 1);
+                int b = rand.Next(0, n - 1);
+
+                swap(result, a, b);
+            }
+
+            return result;
+        }
+
         public static bool TestSortedArray(int[] arr)
         {
             for (int i = 0; i < arr.Length-1; i++)
@@ -53,12 +103,13 @@ namespace DS_LeetCode
             return true;
         }
 
-        private static void swap(int[] arr, int i, int j)
+        public static void swap(int[] arr, int i, int j)
         {
             int temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
         }
+
         #endregion
 
         #region "bubble sort"
@@ -83,7 +134,7 @@ namespace DS_LeetCode
         {
             for (int i = 0; i < arr.Length; i++)
             {
-                for (int j = 0; j < arr.Length - 1 - (i + 1); j++)
+                for (int j = 0; j < arr.Length - 1 - i; j++)
                 {
                     if (arr[j] > arr[j + 1])
                     {
@@ -209,6 +260,21 @@ namespace DS_LeetCode
                 arr[j] = e;
             }
         }
+
+        private static void InsertSort(int[] arr, int l, int r)
+        {
+            
+            for (int i = l + 1; i <= r; i++  )
+            {
+                int key = arr[i];
+                int j;
+                for (j = i;  j > l && arr[j-1] > key; j-- )
+                {
+                    arr[j] = arr[j - 1];
+                }
+                arr[j] = key;
+            }
+        }
         #endregion
 
         #region "shell sort"
@@ -218,12 +284,14 @@ namespace DS_LeetCode
 
             for (int gap = n / 2; gap > 0; gap /= 2)
             {
+                /*注意：对各组进行插入排序时，并不是先对一个组排序完，再对下一个组进行排序， 而是轮流
+                     对每个组进行排序。 理解下面的循环（轮流排序）， 插入排序从第二个元素开始*/
                 for (int i = gap; i < n; i++)
                 {
                     // 下面是插入排序的操作
                     int key = arr[i];
                     int j;
-                    for (j = i;  j > 0 && arr[j - 1] > key; j -= gap)
+                    for (j = i;  j >= gap && arr[j - gap] > key; j -= gap)
                     {
                         arr[j] = arr[j - 1];
                     }
@@ -231,6 +299,126 @@ namespace DS_LeetCode
                 }
             }
         }
+        #endregion
+
+
+        #region "Merge Sort"
+
+        public static void MergeSort(int[] arr)
+        {
+            mergeSort(arr, 0, arr.Length - 1);
+        }
+
+        private static void mergeSort(int[] arr, int l, int r)
+        {
+            if (l >= r)
+            {
+                return;
+            }
+
+            // 解决整数越界问题
+            int mid = (l + r) / 2;
+            
+            // 分组
+            // 递归调用
+            // 这里怎么理解：  可以看作先执行左边的分组， 一直向下执行，知道把左边的分组全部排好顺序。
+            // 再执行右边的分组，把右边也排好顺序，最后合并左右。
+            mergeSort(arr, l, mid);
+            mergeSort(arr, mid + 1, r);
+
+            //merge
+            merge(arr, l, mid, r);
+        }
+
+        // 优化写法
+        public static void MergeSort1(int[] arr)
+        {
+            mergeSort1(arr, 0, arr.Length - 1);
+        }
+        private static void mergeSort1(int[] arr, int l, int r)
+        {
+            //优化2： 对于较小的子数组， 这里取有16个元素的， 采用插入排序。
+            // 因为：对于较小的数组， 可以看作近似有序的数组， 对于近似有序的数组， 插入排序的效率更高。
+            if (r - l >= 15)
+            {
+                InsertSort(arr, l, r);
+            }
+
+            // 解决整数越界问题
+            int mid = (l + r) / 2;
+
+            // 分组
+            // 递归调用
+            // 这里怎么理解：  可以看作先执行左边的分组， 一直向下执行，知道把左边的分组全部排好顺序。
+            // 再执行右边的分组，把右边也排好顺序，最后合并左右。
+            mergeSort1(arr, l, mid);
+            mergeSort1(arr, mid + 1, r);
+
+            // 优化1：
+            // 只有当  左子数组的右边界 大于 右子数组的左边时， 进行merge操作
+            // 因为我们在归并过程中保证了两个字数组的顺序
+            if (arr[mid] > arr[mid + 1])
+            {
+                //merge
+                merge(arr, l, mid, r);
+            }
+         
+        }
+
+
+        // 从底向上的合并排序
+        public static void MergeSortBU(int[] arr)
+        {
+            // 从size为1的子数组（最下面的子数组开始）向上依次合并
+            for (int size = 1; size <=arr.Length; size+=size )
+            {
+                // 循环依次合并两个子数组
+                // 需要合并[i...i+size-1] 以及 [i+size....i+ 2 * size-1]
+                // 注意子数组边界是否越界
+                //i + size < arr.Length 保证了左子数组存在，不越界
+                for (int i = 0; i + size < arr.Length; i+=size + size)
+                {
+                    //Math.Min(i + size + size - 1, arr.Length - 1) 保证了右子数组的右边界不越界
+                    merge(arr, i, i + size - 1, Math.Min(i + size + size - 1, arr.Length - 1));
+                }
+            }
+        }
+
+        private static void merge(int[] arr, int l, int mid, int r)
+        {
+            int[] aux = new int[r - l + 1];
+            for (int m = l;  m <= r; m++ )
+            {
+                aux[m - l] = arr[m];
+            }
+
+            int i = l, j = mid + 1;
+            
+            for (int k = l; k <= r; k++)
+            {
+                if (i > mid)
+                {
+                    arr[k] = aux[j - l];
+                    j++;
+                }
+                else if (j > r)
+                {
+                    arr[k] = aux[i - l];
+                    i++;
+                }
+                else if (aux[i-l] < aux[j-l] )
+                {
+                    arr[k] = aux[i - l];
+                    i++;
+                }
+                else
+                {
+                    arr[k] = aux[j- l];
+                    j++;
+                }
+            }
+        }
+
         #endregion
 
 

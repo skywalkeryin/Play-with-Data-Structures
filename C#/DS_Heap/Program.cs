@@ -43,27 +43,38 @@ namespace DS_Heap
         static void Main(string[] args)
         {
             int[] nums = new int[] { 1, 1, 1, 2, 2, 3 };
-            TopKFrequent(nums, 2);
+            int[] arrs = new int[] { 15, 17, 19, 13, 22, 16, 28, 30, 41, 62 };
+            //TopKFrequent(nums, 2);
 
-            int n = 1000000;
+            int n = 100000;//arrs.Length;
 
             MaxHeap<int> heap = new MaxHeap<int>();
             Random rand = new Random();
+            MaxIndexHeap<int> inxHeap = new MaxIndexHeap<int>();
+
             for (int i = 0; i < n; i++)
             {
-                heap.Add(rand.Next(int.MaxValue));
+                int a = rand.Next(int.MaxValue);
+                heap.Add(a);
+                inxHeap.Add(i, a);
             }
 
             List<int> list = new List<int>();
+            List<int> list2 = new List<int>();
 
             for (int i = 0; i < n; i++)
             {
                 list.Add(heap.ExtractMax());
+                list2.Add(inxHeap.ExtractMax());
             }
 
             for (int i = 0; i < n-1; i++)
             {
                 if (list[i] < list[i+1])
+                {
+                    throw new Exception("Error");
+                }
+                if (list2[i] < list2[i + 1])
                 {
                     throw new Exception("Error");
                 }
@@ -129,49 +140,49 @@ namespace DS_Heap
 
 
         // leet code
-        public static IList<int> TopKFrequent(int[] nums, int k)
-        {
+        //public static IList<int> TopKFrequent(int[] nums, int k)
+        //{
 
-            Dictionary<int, int> dict = new Dictionary<int, int>();
+        //    Dictionary<int, int> dict = new Dictionary<int, int>();
 
-            for (int i = 0; i < nums.Length; i++)
-            {
+        //    for (int i = 0; i < nums.Length; i++)
+        //    {
 
-                if (dict.ContainsKey(nums[i]))
-                {
-                    dict[nums[i]]++;
-                }
-                else
-                {
-                    dict.Add(nums[i], 1);
-                }
-            }
+        //        if (dict.ContainsKey(nums[i]))
+        //        {
+        //            dict[nums[i]]++;
+        //        }
+        //        else
+        //        {
+        //            dict.Add(nums[i], 1);
+        //        }
+        //    }
 
-            PriorityQueue<Freq> pq = new PriorityQueue<Freq>();
-
-
-            foreach (int key in dict.Keys)
-            {
-
-                if (pq.GetSize() < k)
-                {
-                    pq.Enqueue(new Freq(key, dict[key]));
-                }
-                else if (dict[key] > pq.GetFront().Fre)
-                {
-                    pq.Dequeue();
-                    pq.Enqueue(new Freq(key, dict[key]));
-                }
-            }
-
-            List<int> result = new List<int>();
-            for (int i = 0; i < k; i++)
-            {
-                result.Add(heap.Dequeue().Num);
-            }
-            return result;
+        //    PriorityQueue<Freq> pq = new PriorityQueue<Freq>();
 
 
-        }
+        //    foreach (int key in dict.Keys)
+        //    {
+
+        //        if (pq.GetSize() < k)
+        //        {
+        //            pq.Enqueue(new Freq(key, dict[key]));
+        //        }
+        //        else if (dict[key] > pq.GetFront().Fre)
+        //        {
+        //            pq.Dequeue();
+        //            pq.Enqueue(new Freq(key, dict[key]));
+        //        }
+        //    }
+
+        //    List<int> result = new List<int>();
+        //    for (int i = 0; i < k; i++)
+        //    {
+        //        result.Add(heap.Dequeue().Num);
+        //    }
+        //    return result;
+
+
+        //}
     }
 }

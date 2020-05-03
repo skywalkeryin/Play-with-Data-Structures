@@ -349,6 +349,7 @@ namespace DS_BST
             }
         }
 
+        // 看这个数据是当前所有数据的第几名
         public int Rank(T e)
         {
             if (IsEmpty())
@@ -379,6 +380,7 @@ namespace DS_BST
             }
         }
 
+        // 选择特定名次 的数据
         public T Select(int index)
         {
             if (IsEmpty())
@@ -395,7 +397,7 @@ namespace DS_BST
             return retNode.e;
         }
 
-
+       
         private Node Select(Node node, int number, int index)
         {
             if (index == number)

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DS_LeetCode.Sort;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DS_LeetCode
@@ -45,15 +47,75 @@ namespace DS_LeetCode
 
 
             // test time
-            int[] arr = Sorting.GenerateTestArray(10000);
+            int[] arr = Sorting.GenerateTestArray(100000);
 
-            Console.WriteLine("bubble sort seconds " + Sorting.TestSorting(arr, Sorting.BubbleSort));
-            Console.WriteLine("bubble sort1 seconds " + Sorting.TestSorting(arr, Sorting.BubbleSort1));
+            int[] arr1 = arr.Select(a => a).ToArray();
+            int[] arr2 = arr.Select(a => a).ToArray(); // deep copy
+            int[] arr3 = arr.Select(a => a).ToArray(); // deep copy
+            int[] arr4 = arr.Select(a => a).ToArray(); // deep copy
+            int[] arr5 = arr.Select(a => a).ToArray(); // deep copy
+            int[] arr6 = arr.Select(a => a).ToArray(); // deep copy
+            int[] arr7 = arr.Select(a => a).ToArray(); // deep copy
+            int[] arr8 = arr.Select(a => a).ToArray(); // deep copy
+
+            int[] testArray = Sorting.GenerateTestArray(100000);
+            int[] testArray1 = testArray.Select(a => a).ToArray();
+
+            int[] nearlySortedarr = Sorting.GeneratedNearlyArray(1000000, 100);
+            int[] nearlySortedarr1 = nearlySortedarr.Select(a => a).ToArray();
+
+            int[] testArraySmallRange = Sorting.GenerateTestArray(200000, 20);
+            int[] testArraySmallRange1 = testArraySmallRange.Select(a => a).ToArray();
+            int[] testArraySmallRange2 = testArraySmallRange.Select(a => a).ToArray();
+            int[] testArraySmallRange3 = testArraySmallRange.Select(a => a).ToArray();
+
+            int n = 100000;
+            int[] arrInversion = new int[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                arrInversion[i] = i;
+            }
+
+            int[] arrInversion1 = arrInversion.Select(a => a).ToArray();
+            int[] arrInversion2 = arrInversion.Select(a => a).ToArray();
+            //Console.WriteLine("bubble sort seconds " + Sorting.TestSorting(arr, Sorting.BubbleSort));
 
 
-            Console.WriteLine("insertion sort seconds " + Sorting.TestSorting(arr, Sorting.IsertionSort));
-            Console.WriteLine("insertion sort1 seconds " + Sorting.TestSorting(arr, Sorting.IsertionSort2));
-            Console.WriteLine("shell sort seconds " + Sorting.TestSorting(arr, Sorting.ShellSort));
+            //Console.WriteLine("bubble sort1 seconds " + Sorting.TestSorting(arr2, Sorting.BubbleSort1));
+
+            //Console.WriteLine("insertion sort seconds " + Sorting.TestSorting(arr3, Sorting.IsertionSort));
+
+            //Console.WriteLine("insertion sort1 seconds " + Sorting.TestSorting(arr4, Sorting.IsertionSort2));
+
+            //Console.WriteLine("shell sort seconds " + Sorting.TestSorting(arr5, Sorting.ShellSort));
+
+            //Console.WriteLine("merge sort seconds " + Sorting.TestSorting(arr1, Sorting.MergeSort));
+
+            Console.WriteLine("merge sort1 seconds " + Sorting.TestSorting(arrInversion1, Sorting.MergeSort));
+
+            Console.WriteLine("merge sort bu seconds " + Sorting.TestSorting(arrInversion2, Sorting.MergeSortBU));
+
+            //Console.WriteLine("quick sort bu seconds " + Sorting.TestSorting(nearlySortedarr, QuickSortClass.QuickSort));
+
+            //Console.WriteLine("quick sort bu seconds neraly sorted " + Sorting.TestSorting(nearlySortedarr1, QuickSortClass.QuickSort1));
+
+
+
+            //Console.WriteLine("quick sort 1" + Sorting.TestSorting(testArraySmallRange, QuickSortClass.QuickSort1));
+
+            //Console.WriteLine("quick sort two ways " + Sorting.TestSorting(testArraySmallRange1, QuickSortClass.QuickSortTwoWay));
+
+            Console.WriteLine("quick sort three ways " + Sorting.TestSorting(testArraySmallRange2, QuickSortClass.QucikSortThreeWay));
+
+            int[] arrHeap = new int[] { 62, 41,  30, 28, 16, 22, 13, 19, 17, 15 };
+            Console.WriteLine("heap sort " + Sorting.TestSorting(arr8, HeapSortClass.HeapSort));
+
+
+
+
+            //Console.WriteLine("Inversion Mapping algo " + Sorting.TestAlgo(arrInversion, InverseToneMapping.FindInverseToneMapping));
+
 
         }
 
