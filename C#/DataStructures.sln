@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS_LeetCodeTest", "DS_Algor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_UF", "DS_UF\DS_UF.csproj", "{04B8B560-9F01-4D47-848D-474E1015DF3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_Graph", "DS_Graph\DS_Graph.csproj", "{4A749582-AACD-47D7-A155-E77ECB8882AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{04B8B560-9F01-4D47-848D-474E1015DF3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04B8B560-9F01-4D47-848D-474E1015DF3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04B8B560-9F01-4D47-848D-474E1015DF3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A749582-AACD-47D7-A155-E77ECB8882AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A749582-AACD-47D7-A155-E77ECB8882AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A749582-AACD-47D7-A155-E77ECB8882AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A749582-AACD-47D7-A155-E77ECB8882AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
