@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DS_Graph
 {
-    public class SparseGraph
+    public class SparseGraph : IGraph
     {
         private int n; //节点
         private int m; // 边数
@@ -47,11 +47,12 @@ namespace DS_Graph
             }
 
             g[v].Add(w);
-            if (v != w && !directed)  // 无向图， 去掉自环边， 没法去掉平行边， 因为hasEdge的时间复杂度是o(n)的， 成本比较高
+            // 无向图， 去掉自环边， 没法去掉平行边， 因为hasEdge的时间复杂度是o(n)的， 成本比较高
+            // 通常情况下， 在加完所有的边后，一次性去除平行边
+            if (v != w && !directed)  
             {
                 g[w].Add(v);
             }
-
             m++;
         }
 
@@ -76,6 +77,29 @@ namespace DS_Graph
                 }
             }
             return false;
+        }
+
+        //返回定点v的所有邻边
+        public IEnumerable<int> Adj(int v)
+        {
+            if (v < 0 || v >= n)
+            {
+                throw new Exception("v is illegal.");
+            }
+            return g[v];
+        }
+
+        public void Show()
+        {
+            for (int i = 0; i < n; i++)
+            {
+                Console.Out.Write("vertex " + i + ":\t");
+                for (int j = 0; j < g[i].Count; j++)
+                {
+                    Console.Out.Write($"{g[i][j]} \t");
+                }
+                Console.Out.Write('\n');
+            }
         }
 
     }
