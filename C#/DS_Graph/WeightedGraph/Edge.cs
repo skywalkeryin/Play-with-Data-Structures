@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DS_Graph.WeightedGraph
 {
-    public class Edge<Weight> : IComparable<Edge<Weight>> where Weight :IComparable<Weight> 
+    public class Edge<Weight> : IComparable<Edge<Weight>> where Weight :struct,  IComparable<Weight>
     {
         private int a, b;  //边的两点
         private Weight weight; // 边的权重
@@ -34,7 +34,7 @@ namespace DS_Graph.WeightedGraph
             {
                 throw new Exception("Ilegal x");
             }
-            return x == a ? a : b;
+            return x == a ? b : a;
         }
 
         public override string ToString()
@@ -44,11 +44,11 @@ namespace DS_Graph.WeightedGraph
 
         public int CompareTo(Edge<Weight> other)
         {
-            if (other.Wt().CompareTo(this.weight) > 0)
+            if (this.weight.CompareTo(other.Wt()) > 0)
             {
                 return 1;
             }
-            else if (other.Wt().CompareTo(this.weight) < 0)
+            else if (this.weight.CompareTo(other.Wt()) < 0)
             {
                 return -1;
             }
@@ -57,5 +57,12 @@ namespace DS_Graph.WeightedGraph
                 return 0;
             }
         }
+
+        public dynamic AddWeight(Edge<Weight> other)
+        {
+            return ((dynamic)this.weight + (dynamic)other.weight);
+
+        }
+
     }
 }

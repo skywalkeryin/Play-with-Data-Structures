@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DS_Graph.WeightedGraph
 {
-    public interface IWeightedGraph<Weight> where Weight : IComparable<Weight>
+    public interface IWeightedGraph<Weight> where Weight : struct, IComparable<Weight>
     {
         int V();
         int E();

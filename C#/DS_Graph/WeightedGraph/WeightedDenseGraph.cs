@@ -5,7 +5,7 @@ using System.Text;
 namespace DS_Graph.WeightedGraph
 {
     // 稠密图 邻接表
-    public class WeightedDenseGraph<Weight> : IWeightedGraph<Weight> where Weight : IComparable<Weight>
+    public class WeightedDenseGraph<Weight> : IWeightedGraph<Weight> where Weight : struct, IComparable<Weight>
     {
         private int n;
         private int m;

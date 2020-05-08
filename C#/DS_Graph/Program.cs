@@ -1,5 +1,6 @@
 ﻿using DS_Graph.WeightedGraph;
 using System;
+using System.Collections.Generic;
 
 namespace DS_Graph
 {
@@ -51,6 +52,40 @@ namespace DS_Graph
             Console.WriteLine("test  in weighted sparse graph ");
 
             wgraph4.Show();
+
+            Console.WriteLine("Test MinHeap");
+            int n = 100000;
+            MinHeap<int> heap = new MinHeap<int>(n);
+            Random rand = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                heap.Add(rand.Next(n));
+            }
+            List<int> list = new List<int>();
+            for (int i = 0; i < n; i++)
+            {
+                list.Add(heap.ExtractMin());
+            }
+            for (int i = 0; i < n-1; i++)
+            {
+                if(list[i] > list[i + 1]){
+                    throw new Exception("MinHeap error");
+                }
+            }
+
+
+            Console.WriteLine("===========================================");
+            Console.WriteLine("Test MST");
+
+            SparseWeightedGraph<double> wgraph5 = new SparseWeightedGraph<double>(8, false);
+            ReadWeightedGraph readGraph5 = new ReadWeightedGraph(wgraph5, "testG1.txt");
+            LazyPrimeMST<double> mst = new LazyPrimeMST<double>(wgraph5);
+            List<Edge<double>> mstPath = mst.MstEdges();
+
+            for (int i =0; i < mstPath.Count; i++)
+            {
+                Console.WriteLine(mstPath[i]);
+            }
 
         }
     }

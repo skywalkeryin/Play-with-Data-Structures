@@ -5,7 +5,7 @@ using System.Text;
 namespace DS_Graph.WeightedGraph
 {
     // 稀松图， 邻接表
-    public class SparseWeightedGraph<Weight> : IWeightedGraph<Weight> where Weight : IComparable<Weight>
+    public class SparseWeightedGraph<Weight> : IWeightedGraph<Weight> where Weight : struct, IComparable<Weight>
     {
         private int n; //节点个数
         private int m; //边的个数
