@@ -4,6 +4,8 @@ using System.Text;
 
 namespace DS_Graph
 {
+    // 初始化一个图和一个源点， 
+    // 传入任意一个点，找到源点到这个点的路径
     public class Path
     {
         private IGraph G;

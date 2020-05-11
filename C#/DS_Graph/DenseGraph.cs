@@ -65,7 +65,7 @@ namespace DS_Graph
         }
         public bool HasEdge(int v, int w)
         {
-            return g[v][w];
+            return g[v][w];  
         }
 
 

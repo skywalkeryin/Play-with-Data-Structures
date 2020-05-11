@@ -46,6 +46,18 @@ namespace DS_Heap
             int[] arrs = new int[] { 15, 17, 19, 13, 22, 16, 28, 30, 41, 62 };
             //TopKFrequent(nums, 2);
 
+            IndexMinHeap<int> heap2 = new IndexMinHeap<int>(nums.Length);
+            for (int i =0; i < nums.Length; i++)
+            {
+                heap2.Add(i,nums[i]);
+            }
+            List<int> list3 = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                list3.Add(heap2.ExtractMin());
+            }
+
+
             int n = 100000;//arrs.Length;
 
             MaxHeap<int> heap = new MaxHeap<int>();
@@ -158,20 +170,20 @@ namespace DS_Heap
         //        }
         //    }
 
-        //    PriorityQueue<Freq> pq = new PriorityQueue<Freq>();
+        //    PriorityQueue<Freq> ipq = new PriorityQueue<Freq>();
 
 
         //    foreach (int key in dict.Keys)
         //    {
 
-        //        if (pq.GetSize() < k)
+        //        if (ipq.GetSize() < k)
         //        {
-        //            pq.Enqueue(new Freq(key, dict[key]));
+        //            ipq.Enqueue(new Freq(key, dict[key]));
         //        }
-        //        else if (dict[key] > pq.GetFront().Fre)
+        //        else if (dict[key] > ipq.GetFront().Fre)
         //        {
-        //            pq.Dequeue();
-        //            pq.Enqueue(new Freq(key, dict[key]));
+        //            ipq.Dequeue();
+        //            ipq.Enqueue(new Freq(key, dict[key]));
         //        }
         //    }
 

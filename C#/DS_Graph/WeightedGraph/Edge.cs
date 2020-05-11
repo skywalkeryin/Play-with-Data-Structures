@@ -10,6 +10,10 @@ namespace DS_Graph.WeightedGraph
         private int a, b;  //边的两点
         private Weight weight; // 边的权重
 
+        public Edge()
+        {
+
+        }
         public Edge(int v, int w, Weight weight)
         {
             this.a = v;

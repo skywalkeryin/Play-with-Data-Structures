@@ -1,4 +1,5 @@
 ﻿using DS_Graph.WeightedGraph;
+using DS_Graph.WeightedGraph.Optimization;
 using System;
 using System.Collections.Generic;
 
@@ -86,6 +87,49 @@ namespace DS_Graph
             {
                 Console.WriteLine(mstPath[i]);
             }
+
+            Console.WriteLine("Test Index MinHeap");
+
+            IndexMinHeap<int> heap1 = new IndexMinHeap<int>(n);
+            for (int i = 0; i < n; i++)
+            {
+                heap1.Add(i, rand.Next(n));
+            }
+
+            for (int i = 0; i < n / 2; i++)
+            {
+                heap1.Update(i, rand.Next(n));
+            }
+
+            List<int> list1 = new List<int>();
+            for (int i = 0; i < n; i++)
+            {
+                list1.Add(heap1.ExtractMin());
+            }
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                if (list1[i] > list1[i + 1])
+                {
+                    throw new Exception("IndexMinHeap error");
+                }
+            }
+
+
+            Console.WriteLine("===========================================");
+            Console.WriteLine("Test MST Optimization");
+
+            SparseWeightedGraph<double> wgraph6 = new SparseWeightedGraph<double>(8, false);
+            ReadWeightedGraph readGraph6 = new ReadWeightedGraph(wgraph6, "testG1.txt");
+            PrimMST<double> mst1 = new PrimMST<double>(wgraph6);
+            List<Edge<double>> mstPath1 = mst1.MstEdges();
+
+            for (int i = 0; i < mstPath1.Count; i++)
+            {
+                Console.WriteLine(mstPath1[i]);
+            }
+
+
 
         }
     }

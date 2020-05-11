@@ -10,7 +10,7 @@ namespace DS_Graph.WeightedGraph
         private IWeightedGraph<Weight> g;
         private bool[] marked;
 
-        private MinHeap<Edge<Weight>> pq;
+        private MinHeap<Edge<Weight>> ipq;
         private List<Edge<Weight>> path;
         private Weight wt;
 
@@ -18,15 +18,15 @@ namespace DS_Graph.WeightedGraph
         {
             this.g = graph;
             this.marked = new bool[graph.V()];
-            this.pq = new MinHeap<Edge<Weight>>(graph.E()); // 边的个数
+            this.ipq = new MinHeap<Edge<Weight>>(graph.E()); // 边的个数
             this.path = new List<Edge<Weight>>();
 
             //Lazy prime算法
             visit(0); //从0开始遍历
 
-            while (!pq.IsEmpty()) 
+            while (!ipq.IsEmpty()) 
             {
-                Edge<Weight> minEdge = pq.ExtractMin();
+                Edge<Weight> minEdge = ipq.ExtractMin();
 
                 // 如果两个点在同一分区， 则边不符合跨区
                 if (marked[minEdge.V()] == marked[minEdge.W()])
@@ -77,7 +77,7 @@ namespace DS_Graph.WeightedGraph
             {
                 if (!marked[edge.Other(i)])
                 {
-                    pq.Add(edge);
+                    ipq.Add(edge);
                 }
             }
         }
