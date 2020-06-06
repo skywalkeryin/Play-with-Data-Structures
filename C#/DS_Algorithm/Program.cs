@@ -112,7 +112,7 @@ namespace DS_LeetCode
             Console.WriteLine("heap sort " + Sorting.TestSorting(arr8, HeapSortClass.HeapSort));
 
 
-
+            Console.WriteLine(TwoPointers.IsHappy(2)); 
 
             //Console.WriteLine("Inversion Mapping algo " + Sorting.TestAlgo(arrInversion, InverseToneMapping.FindInverseToneMapping));
 

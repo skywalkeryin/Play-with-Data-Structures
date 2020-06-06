@@ -96,7 +96,7 @@ namespace DS_Graph
                 Console.Out.Write("vertex " + i + ":\t");
                 for (int j = 0; j < g[i].Count; j++)
                 {
-                    Console.Out.Write($"{g[i][j]} \t");
+                    Console.Out.Wri te($"{g[i][j]} \t");
                 }
                 Console.Out.Write('\n');
             }

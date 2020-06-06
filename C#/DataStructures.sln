@@ -33,6 +33,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS_UF", "DS_UF\DS_UF.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS_Graph", "DS_Graph\DS_Graph.csproj", "{4A749582-AACD-47D7-A155-E77ECB8882AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_LinkedList_Leetcode", "DS_LinkedList_Leetcode\DS_LinkedList_Leetcode.csproj", "{954A7003-A910-4086-A10F-7749D43249E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_LinkedList_LeetcodeTest", "DS_LinkedList_LeetcodeTest\DS_LinkedList_LeetcodeTest.csproj", "{DA116C7A-696F-4320-9805-37183AA52EAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +103,14 @@ Global
 		{4A749582-AACD-47D7-A155-E77ECB8882AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A749582-AACD-47D7-A155-E77ECB8882AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A749582-AACD-47D7-A155-E77ECB8882AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{954A7003-A910-4086-A10F-7749D43249E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{954A7003-A910-4086-A10F-7749D43249E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{954A7003-A910-4086-A10F-7749D43249E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{954A7003-A910-4086-A10F-7749D43249E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA116C7A-696F-4320-9805-37183AA52EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA116C7A-696F-4320-9805-37183AA52EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA116C7A-696F-4320-9805-37183AA52EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA116C7A-696F-4320-9805-37183AA52EAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

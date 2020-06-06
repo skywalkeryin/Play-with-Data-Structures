@@ -233,7 +233,7 @@ namespace DS_LeetCode.Sort
 
             int pivot = arr[l];
 
-            int i = l;
+            int i = l;   //[l + 1, i]  为小于 pivot
             for (int j = l + 1; j <= r; j++)
             {
                 if (arr[j] < pivot)
