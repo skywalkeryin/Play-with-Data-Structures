@@ -4,8 +4,6 @@ using System.Text;
 
 namespace DS_LinkedList_Leetcode
 {
-
-
     // Definition for singly-linked list.
     public class ListNode
     {
@@ -333,5 +331,202 @@ namespace DS_LinkedList_Leetcode
 
         }
         #endregion
+
+        #region "148 sort list"
+        // merge sort bottom-up
+        // Time Complexity； o(nlogn)
+        // Space Complexity: o(logn) 递归调用，栈空间
+        public static ListNode SortList(ListNode head)
+        {
+
+            if (head == null || head.next == null)
+            {
+                return null;
+            }
+
+            ListNode cur = head;
+
+            int length = 0;
+
+            while (cur != null)
+            {
+                cur = cur.next;
+                length++;
+            }
+            ListNode dummyHead = new ListNode(0);
+            dummyHead.next = head;
+            cur = head;
+            for (int size = 1;  size < length; size += size)
+            {
+                ListNode tail = dummyHead;
+                for (ListNode cur1 = dummyHead.next; cur1 != null;)
+                {
+                    ListNode l = cur1;
+                    ListNode r = cur1;
+                    for (int i = 0; i < size - 1 && r != null; i++)
+                    {
+                        r = r.next;
+                    }
+                    // move the cur1 to the next pair node list
+                    for (int i =0; i < (size + size) && cur1 != null; i++)
+                    {
+                        cur1 = cur1.next;
+                    }
+                    ListNode r1 = r.next;
+                    if (r != null)
+                    {
+                        r.next = null; // break for l;
+                    }
+
+                    ListNode r2 = r1;
+                    for (int i = 0; i < size - 1 && r2 != null; i++)
+                    {
+                        r2 = r2.next;
+                    }
+                    if (r2 != null)
+                    {
+                        r2.next = null; // break for r1
+                    }
+                    (ListNode start, ListNode end) = merge(l, r1);
+                    tail.next = start;
+                    tail = end;
+                }
+            }
+            return dummyHead.next;
+        }
+
+        // 返回merge后的头节点和尾节点
+        private static (ListNode, ListNode) merge(ListNode l1, ListNode l2)
+        {
+            ListNode dummyHead = new ListNode(-1);
+            ListNode pre = dummyHead;
+
+            while (l1 != null || l2 != null)
+            {
+
+                if (l1 != null && l2 != null)
+                {
+                    if (l1.val <= l2.val)
+                    {
+                        pre.next = l1;
+                        l1 = l1.next;
+                    }
+                    else
+                    {
+                        pre.next = l2;
+                        l2 = l2.next;
+                    }
+                }
+                else if (l1 != null && l2 == null)
+                {
+                    pre.next = l1;
+                    l1 = l1.next;
+                }
+                else  // l2 != null && l1 == null
+                {
+                    pre.next = l2;
+                    l2 = l2.next;
+                }
+                pre = pre.next;
+            }
+            return (dummyHead.next, pre);
+        }
+
+        #endregion
+
+        #region
+        public static int EvalRPN(string[] tokens)
+        {
+
+
+            Stack<string> stack = new Stack<string>();
+
+            foreach (string c in tokens)
+            {
+                if (c != "+" && c != "-" && c != "*" && c != "/")
+                {
+                    stack.Push(c);
+                }
+                else
+                {
+                    int a = Convert.ToInt16(stack.Pop());
+                    int b = Convert.ToInt16(stack.Pop());
+                    int n = 0;
+                    switch (c)
+                    {
+                        case "+":
+                            n = a + b;
+                            break;
+                        case "-":
+                            n = a - b;
+                            break;
+                        case "*":
+                            n = a * b;
+                            break;
+                        case "/":
+                            n = a / b;
+                            break;
+                        default:
+                            break;
+                    }
+                    stack.Push(n.ToString());
+                }
+            }
+            return Convert.ToInt32(stack.Peek());
+
+        }
+        #endregion
+
+        #region "Simplify Path"
+        public static string SimplifyPath(string path)
+        {
+
+            Stack<string> stack = new Stack<string>();
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < path.Length; i++)
+            {
+                char c = path[i];
+               
+                if (c != '/' && c != '.')
+                {
+                    sb.Append(c);
+                }
+                else if (c == '/')
+                {
+                    if (sb.Length > 0)
+                    {
+                        stack.Push(sb.ToString());
+                        sb.Clear();
+                    }
+                }
+                else if (c == '.' && path[i + 1] == '.')
+                {
+                    if (stack.Count > 0)
+                    {
+                        stack.Pop();
+                    }
+                }
+            }
+
+            string result = "/";
+            while (stack.Count > 0)
+            {
+                if (stack.Count == 1)
+                {
+                    result += stack.Pop();
+                }
+                else
+                {
+                    result += stack.Pop() + "/";
+                }
+            }
+            return result;
+        }
+        #endregion
+
+
+
+
     }
 }

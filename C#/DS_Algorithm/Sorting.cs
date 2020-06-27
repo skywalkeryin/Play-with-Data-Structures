@@ -177,17 +177,17 @@ namespace DS_LeetCode
             // 元素可以看作已经排好序的
             for (int i = 1; i < n; ++i)
             {
-                int key = arr[i];
-                
+
+
                 // 寻找当前arr[i]合适的插入位置
                 // 写法1：
                 /*
                  从i开始， 依次和前一个元素比较，如果比前一个元素小， 则交换位置。 否则的话， 就是已经排好序的数组。
                  */
-                for (int j = i;  j > 0 && arr[j] < arr[j - 1]; j-- )
-                {
-                    swap(arr, j, j - 1);
-                }
+                //for (int j = i;  j > 0 && arr[j] < arr[j - 1]; j-- )
+                //{
+                //    swap(arr, j, j - 1);
+                //}
 
                 // 写法2： 
                 // 保证[0...i-1]为顺序数组
@@ -200,18 +200,13 @@ namespace DS_LeetCode
                 //    k = k - 1;
                 //}
                 //arr[k + 1] = key;
-
-                for (int j = i - 1; j >= 0; j--)
+                int key = arr[i];
+                int j = i;
+                for (; j > 0 && arr[j-1] > key; j--)
                 {
-                    if (arr[j] > arr[i])
-                    {
-                        arr[j+1] = arr[j];
-                    }
-                    else
-                    {
-                        arr[j] = arr[i];
-                    }
+                    arr[j] = arr[j-1];
                 }
+                arr[j] = key;
                
             }
        }

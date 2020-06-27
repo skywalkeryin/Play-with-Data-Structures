@@ -1,5 +1,6 @@
 using DS_LinkedList_Leetcode;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace DS_LinkedList_LeetcodeTest
@@ -68,6 +69,109 @@ namespace DS_LinkedList_LeetcodeTest
 
             ListNode l1 = ListNode.CreateListNode(nums);
             ReverseLinkedList.InsertionSortList(l1);
+        }
+
+        [Fact]
+        public void TestSortList()
+        {
+            int[] nums = { 4, 2, 1, 3 };
+
+            ListNode l1 = ListNode.CreateListNode(nums);
+            ReverseLinkedList.SortList(l1);
+        }
+
+        [Fact]
+        public void TestEvalRPN()
+        {
+            string[] nums = { "4","13","5","/","+"};
+            ReverseLinkedList.EvalRPN(nums);
+        }
+
+        [Fact]
+        public void TestSimplifyPath()
+        {
+            string str = "/home/a";
+            ReverseLinkedList.SimplifyPath(str);
+        }
+
+        [Fact]
+        public void TestBinaryTreePaths()
+        {
+            int?[]  nums =  { 1, 2, 3, null, 5 };
+            TreeNode node = TreeNode.GenerateTreeNode(nums);
+
+            List<string> LIST = BstLeetCode.BinaryTreePaths(node);
+        }
+
+        [Fact]
+        public void TestLetterCombinations()
+        {
+            BackTracking.LetterCombinations("23");
+        }
+
+        [Fact]
+        public void TestPermute()
+        {
+            BackTracking.Permute(new int[] { 1,2,3 });
+        }
+
+        [Fact]
+        public void TestExist()
+        {
+            //char[][] board = new char[3][]
+            //{
+            //    new char[] { 'A','B','C','E' },
+            //    new char[] { 'S','F','C','S' },
+            //    new char[] { 'A','D','E','E' },
+            //};
+            char[][] board = new char[][]
+            {
+                new char[]{ 'a', 'a'}
+            };
+            BackTracking.Exist(board, "aa");
+        }
+        [Fact]
+        public void TestNumberOfIslands()
+        {
+            char[][] board = new char[4][]
+            {
+                new char[] { '1','1','1','1','0' },
+                new char[] { '1','1','0', '1','0' },
+                new char[] { '1','1','1','0', '0' },
+                new char[] { '0','0','0','0', '0' },
+            };
+
+            BackTracking.NoofIslands.NumIslands(board);
+        }
+
+        [Fact]
+        public void TestNQueens()
+        {
+            BackTracking.Nqueens.SolveNQueens(4);
+        }
+
+        [Fact]
+        public void TestSodudoSolver()
+        {
+            char[][] board = new char[9][] {
+            new char[]{ '5', '3', '.', '.', '7', '.', '.', '.', '.' }, 
+            new char[]{ '6','.','.','1','9','5','.','.','.' }, 
+            new char[]{ '.','9','8','.','.','.','.','6','.' }, 
+            new char[]{ '8','.','.','.','6','.','.','.','3' }, 
+            new char[]{ '4','.','.','8','.','3','.','.','1' }, 
+            new char[]{ '7','.','.','.','2','.','.','.','6'}, 
+            new char[]{ '.','6','.','.','.','.','2','8','.' }, 
+            new char[]{ '.','.','.','4','1','9','.','.','5' }, 
+            new char[]{ '.','.','.','.','8','.','.','7','9' },
+            };
+
+            BackTracking.SudokuSolver.SolveSudoku(board);
+        }
+
+        [Fact]
+        public void TestUniquePaths()
+        {
+            BackTracking.UniquePaths.UniquePaths1(3, 2);
         }
     }
 }
