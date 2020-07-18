@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>DS_LeetCode.Kth_Smallest_ElementinaSortedMatrix</StartupObject>
+    <ApplicationIcon />
   </PropertyGroup>
 
 </Project>

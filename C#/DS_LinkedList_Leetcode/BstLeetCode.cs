@@ -68,5 +68,66 @@ namespace DS_LinkedList_Leetcode
         }
         #endregion
 
+        #region "107. Binary Tree Level Order Traversal II"
+
+        public static IList<IList<int>> LevelOrderBottom(TreeNode root)
+        {
+
+            IList<IList<int>> result = new List<IList<int>>();
+            if (root == null)
+            {
+                return result;
+            }
+
+            Queue<Tuple<TreeNode, int>> queue = new Queue<Tuple<TreeNode, int>>();
+            queue.Enqueue(new Tuple<TreeNode, int>(root, 0));
+
+            while (queue.Count > 0)
+            {
+                (TreeNode node, int level) = queue.Dequeue();
+
+                if (level == result.Count)
+                {
+                    result.Add(new List<int>());
+                }
+
+                if (node != null)
+                {
+                    result[level].Add(node.val);
+                }
+                if (node.left != null)
+                {
+                    queue.Enqueue(new Tuple<TreeNode, int>(node.left, level + 1));
+                }
+                if (node.right != null)
+                {
+                    queue.Enqueue(new Tuple<TreeNode, int>(node.right, level + 1));
+                }
+            }
+            reverse(result);
+
+            return result;
+        }
+
+        private static void reverse(IList<IList<int>> data)
+        {
+
+            int i = 0;
+            int j = data.Count - 1;
+
+            while (j > i)
+            {
+                swap(data, i, j);
+            }
+        }
+        private static void swap(IList<IList<int>> data, int i, int j)
+        {
+            IList<int> temp = data[i];
+
+            data[i] = data[j];
+            data[j] = temp;
+        }
+        #endregion
+
     }
 }

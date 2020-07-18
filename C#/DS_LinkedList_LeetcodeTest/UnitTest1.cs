@@ -173,5 +173,14 @@ namespace DS_LinkedList_LeetcodeTest
         {
             BackTracking.UniquePaths.UniquePaths1(3, 2);
         }
+
+        [Fact]
+        public void TestLevelOrderBottom()
+        {
+            int?[] nums = { 3, 9, 20, null, null, 15, 7 };
+            TreeNode treeNode = TreeNode.GenerateTreeNode(nums);
+
+            BstLeetCode.LevelOrderBottom(treeNode);
+        }
     }
 }
